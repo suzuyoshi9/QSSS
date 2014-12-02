@@ -57,7 +57,7 @@ class Database{
 
     public function getuid($user){
         if(isset($this->stmt)) $this->stmt->reset();
-        $this->stmt=$this->link->prepare("select id from user where name = ?");
+        $this->stmt=$this->link->prepare("select id from user where login_name= ?");
         $this->stmt->bind_param('s',$user);
         $this->stmt->execute() or exit($this->getError());
         $this->stmt->bind_result($result);
