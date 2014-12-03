@@ -1,0 +1,6 @@
+#tag_list label {
+  display: inline-block;
+  text-decoration: underline; 
+  cursor: pointer;
+  width: 110px;
+}

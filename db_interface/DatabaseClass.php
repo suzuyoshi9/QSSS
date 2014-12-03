@@ -65,6 +65,16 @@ class Database{
         return $result;	
     }
 
+    public function gettid($tag){
+        if(isset($this->stmt)) $this->stmt->reset();
+        $this->stmt=$this->link->prepare("select id from tag where name= ?");
+        $this->stmt->bind_param('s',$tag);
+        $this->stmt->execute() or exit($this->getError());
+        $this->stmt->bind_result($result);
+        $this->stmt->fetch();
+        return $result;
+    }
+
     public function __destruct(){
         $this->close();
     }

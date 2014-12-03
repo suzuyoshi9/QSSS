@@ -24,15 +24,19 @@
 <?php
 	include_once "db_interface/DatabaseClass.php";
         $db=new Database();
-	$query = "select d.filename,d.gen_date,u.show_name from document d, user u where d.uid=u.id";
+	$query = "select d.id,d.filename,d.gen_date,u.show_name from document d, user u where d.uid=u.id";
         $result=$db->query($query);
-        $result->bind_result($filename,$date,$show_name);
+        $result->bind_result($did,$filename,$date,$show_name);
         while($result->fetch()){
            echo "<tr>";
-	   echo "<th>".$filename."</th>";
+	   echo "<th>";
+	   echo '<a href="details.php?did=';
+	   echo "$did";
+	   echo '">';
+	   echo $filename."</th>";
 	   echo "<th>".$date."</th>";
            echo "<th>".$show_name."</th>";
-	   echo "</tr>";
+	   echo "</tr>\n";
         }
 ?>
 </table>

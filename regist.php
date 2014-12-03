@@ -3,7 +3,7 @@ include_once "DatabaseClass.php";
 $db = new Database();
 extract($_POST);
  
-$query = "select name from user where login_name=?";
+$query = "select login_name from user where login_name=?";
 $db->prepare($query);
 $db->bind_param('s',$user);
 $result=$db->execute();
