@@ -44,9 +44,10 @@ function execute() {
 </head>
 <body onload="execute()">
 <h1>ファイルのアップロード上限は50MBです!!!!!!!!!</h1>
+<h2>拡張子は .jpg .png .pdf .docx .doc .xls .xlsx .ppt .pptx に限ります！！！！</h2>
 <form action="file_upload.php" method="post" enctype="multipart/form-data">
 ファイル：<br />
-<input type="file" name="file" size="30" required><br />
+<input type="file" name="file" size="30" accept=".jpg,.png,.pdf,.docx,.doc,.xls,.xlsx,.ppt,.pptx" required><br />
 <br />
 コメント：<br />
 <textarea name="comment" cols="50" rows="5"></textarea><br /><br />

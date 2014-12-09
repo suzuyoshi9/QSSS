@@ -45,6 +45,7 @@
 	}else{
 		echo "失敗だぼけぇ！";
 	}
+        if(!isset($_POST["tags"])) exit();
         $did=$db->insert_id;
         $tags=$_POST["tags"];
         $query="insert into tagmap(doc_id,tag_id) values(?,?)";

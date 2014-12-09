@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>ユーザーの追加</title>
+<link rel="stylesheet" href="resources/main.css" type="text/css">
+</head>
+<body>
+<p>ユーザー追加</p>
+<form action="regist.php" method="POST">
+<p>ユーザー名(英数字):<input type="text" name="user" size="10" pattern="^[0-9A-Za-z]+$" required></p>
+<p>表示名:<input type="text" name="show_name" size="10" required></p>
+<p>パスワード:<input type="password" name="pass" size="10" required></p>
+<p>パスワード(再入力):<input type="password" name="repass" size="10" required></p>
+<p>メールアドレス:<input type="email" name="mail" size="15" required></p>
+<p><input type="submit" value="送信"></p>
+</form>
+<a href="login.html">ログイン画面へ</a>
+</body>
+</html>

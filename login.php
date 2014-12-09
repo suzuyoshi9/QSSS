@@ -20,15 +20,18 @@ function login($name,$pass){
     $db->bind_param('s',$name);
     $result=$db->execute();
     if($result->num_rows == 0){
-        echo "hoge";
         die('<html><body>ユーザー名もしくはパスワードが合いません<br><a href="javascript:history.go(-1)">戻る</a>');
     }
-    //$pass=hash('sha256',$pass);
+    $pass=hash('sha256',$pass);
     $result->bind_result($dbpass);
     $result->fetch();
     if(!($pass===$dbpass)){
         die('<html><body>ユーザー名もしくはパスワードが合いません<br><a href="javascript:history.go(-1)">戻る</a>');
     }else{
+        $query = "update user set last_login = now() where login_name=?";
+        $db->prepare($query);
+        $db->bind_param('s',$name);
+        $result=$db->execute();
         session_regenerate_id(TRUE);
         $_SESSION["USERID"]=$name;
         header("Location:index.php");

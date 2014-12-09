@@ -13,7 +13,6 @@
 <body>
 <h1>QSSS</h1>
 <a href="upload.php">ファイルアップロード</a><br>
-<a href="tag_list.php">タグリスト</a><br>
 <a href="login.php">ログイン</a><br>
 <a href="logout.php">ログアウト</a><br>
 <table border=3 width=500 align=center>
@@ -25,8 +24,11 @@
 <?php
 	include_once "db_interface/DatabaseClass.php";
         $db=new Database();
-	$query = "select d.id,d.filename,d.gen_date,u.show_name from document d, user u where d.uid=u.id";
-        $result=$db->query($query);
+        $tid=$_GET["tid"];
+	$query = "select d.id,d.filename,d.gen_date,u.show_name from document d, user u, tagmap t where d.uid=u.id and t.doc_id=d.id and t.tag_id=?";
+        $db->prepare($query);
+        $db->bind_param('i',$tid);
+        $result=$db->execute();
         $result->bind_result($did,$filename,$date,$show_name);
         while($result->fetch()){
            echo "<tr>";
