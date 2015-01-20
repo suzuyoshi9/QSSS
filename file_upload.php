@@ -12,12 +12,29 @@
 	//for($i=0; $i<15; $i++){
 	//	$server_filename .= mt_rand(0, strlen($rand_str)-1);
 	//}//たぶん文字列ランダム
+
+/////////////ファイルタイプ判別//////////////////////////////
+
+function check_type($file){
+        $finfo    = finfo_open(FILEINFO_MIME_TYPE);
+        $mimeType = finfo_file($finfo,$file);
+        finfo_close($finfo);
+	$mimeType = trim($mimeType);
+	$mimeType = preg_replace("/ [^ ]*/", "", $mimeType);
+	echo $mimeType;
+        return $mimeType;
+}
 	
+//////////////////////////////////////////
+
 	$server_filename=md5(uniqid(rand(), true));//文字数ランダム
         $comment=$_POST["comment"];
 	date_default_timezone_set('Asia/Tokyo');
 	ini_set( 'display_errors', 1 ); 
 	$server_filename .= ".".pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);	
+	//check_type($_FILES["file"]["tmp_name"]);
+	//if(check_type($_FILES["file"]["tmp_name"])!="image")
+
 	if (is_uploaded_file($_FILES["file"]["tmp_name"])) {
 		if(move_uploaded_file($_FILES["file"]["tmp_name"],"files/" . $server_filename)){
 			//chmod("files/" . $_FILES["file"]["name"],0644);

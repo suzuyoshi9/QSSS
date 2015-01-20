@@ -57,7 +57,7 @@ class Database{
 
     public function getuid($user){
         if(isset($this->stmt)) $this->stmt->reset();
-        $this->stmt=$this->link->prepare("select id from user where login_name= ?");
+        $this->stmt=$this->link->prepare("select id from user where login_name = ?");
         $this->stmt->bind_param('s',$user);
         $this->stmt->execute() or exit($this->getError());
         $this->stmt->bind_result($result);
@@ -67,12 +67,43 @@ class Database{
 
     public function gettid($tag){
         if(isset($this->stmt)) $this->stmt->reset();
-        $this->stmt=$this->link->prepare("select id from tag where name= ?");
+        $this->stmt=$this->link->prepare("select id from tag where name = ?");
         $this->stmt->bind_param('s',$tag);
         $this->stmt->execute() or exit($this->getError());
         $this->stmt->bind_result($result);
         $this->stmt->fetch();
         return $result;
+    }
+
+    public function getdid($document){
+        if(isset($this->stmt)) $this->stmt->reset();
+        $this->stmt=$this->link->prepare("select id from document where filename = ?");
+        $this->stmt->bind_param('s',$document);
+        $this->stmt->execute() or exit($this->getError());
+        $this->stmt->bind_result($result);
+        $this->stmt->fetch();
+        return $result;
+    }
+
+    public function getauthor($did){
+        if(isset($this->stmt)) $this->stmt->reset();
+        $this->stmt=$this->link->prepare("select uid from document where id = ?");
+        $this->stmt->bind_param('i',$did);
+        $this->stmt->execute() or exit($this->getError());
+        $this->stmt->bind_result($result);
+        $this->stmt->fetch();
+        return $result;
+    }
+
+    public function isadmin($user){
+        if(isset($this->stmt)) $this->stmt->reset();
+        $this->stmt=$this->link->prepare("select manager_id from user where login_name = ?");
+        $this->stmt->bind_param('s',$user);
+        $this->stmt->execute() or exit($this->getError());
+        $this->stmt->bind_result($result);
+        $this->stmt->fetch();
+        if($result==1) return true;
+        else return false;
     }
 
     public function __destruct(){

@@ -1,0 +1,56 @@
+*{
+	font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+
+ul {
+	margin: 0px;
+	padding: 0px;
+}
+ul li {
+	list-style-type: none;
+}
+ul#menu{
+	margin-left: 25px;
+	list-style: disc;
+}
+ul#menu li {
+	background: #ccc;
+	float: left;
+	width: 10em;
+	margin-right: 5px;
+	padding: 2px;
+	border: 1px #6BA1B2 solid;
+	background-color: #99E6FF;
+	text-align: center;
+}
+#menu2 {
+	width: 900px;  
+    	margin: 0 auto;  
+    	text-align: center;
+}
+table{
+	width: 900px;
+        margin: 0 auto;
+}
+a:visited.title{
+	color: #000000;
+/*タイトルは黒のままがいいのに*/	
+}
+a.title{
+	text-decoration: none;
+}
+
+h1 {text-shadow: 5px 5px 2px lightgrey;}
+
+div#wrapper{
+	width: 900px;
+	margin: 0 auto;  
+	text-align: left;
+}
+
+body{
+	text-align:center;
+}
+a{
+	text-decoration: none; 
+}

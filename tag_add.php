@@ -2,7 +2,7 @@
 include_once "db_interface/DatabaseClass.php";
 $db = new Database();
 extract($_POST);
-
+$name = preg_replace('/(\s|　)/','',$name);
 $query = "select name from tag where name=?";
 $db->prepare($query);
 $db->bind_param('s',$name);

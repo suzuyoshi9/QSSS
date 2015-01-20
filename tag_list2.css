@@ -1,0 +1,20 @@
+/*#taglist li{
+	list-style-type:none;
+	display:inline;
+	margin: 0 10px;
+	padding: 0 10px;
+	text-align:center;
+	position:relative;
+	border: solid 1px;
+	box-shadow(rgba(0, 0, 0, .15) 0 0 2px);
+}*/
+
+
+#taglist {text-align: center;}
+
+#taglist li {display: inline-block;
+	background-color:#BDBDBD;
+	box-shadow:1px 1px;}
+
+#taglist li a {display: block;}
+
